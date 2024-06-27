@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from users.models import User
+from users.models import User, Contributor
 
 
 class UsersSerializer(ModelSerializer):
@@ -14,3 +14,11 @@ class UsersSerializer(ModelSerializer):
             'can_be_contacted',
             'can_data_be_shared'
         ]
+
+
+class ContributorSerializer(ModelSerializer):
+    user = UsersSerializer()
+
+    class Meta:
+        model = Contributor
+        fields = ['user']
